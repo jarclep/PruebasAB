@@ -1,0 +1,30 @@
+Implementando pruebas de Apache_Beam, creando una PCollection obtenida a partir de una conexiónJDBC 
+a SQLserver, después maniobrar con ParDo transformations.
+
+Diseño de laboratorio:
+-Jupyter Lab
+-Repositorio en Github
+-Apache_Beam instalado
+-SQLserver
+-Conexión a la nube GCP en linea de comando
+
+
+Primeros pasos:
+1. Crear un repositorio en github, ponerlo en modo público para empezar
+2. Instalar jupyter lab desde línea de comando: 
+	pip install jupyter lab
+	#Ejecutar jupyter lab desde la carpeta deseada, una limpia para hacer conexión a github
+	jupyter lab
+	#Instalas Apache BEam
+	pip install apache_beam
+3. Inicializar Repositorio local y conectar con remoto:
+	git init
+	git remote add origin https://github.com/jarclep/PruebasAB.git #conexión con remoto creado en 1.
+	git add . //staging
+	#Ahora doy mis credenciales para que github sepa quién soy, cuál es mi correo
+	git config --global user.email "jarclep@gmail.com"
+	git config --global user.name "Arturo Clemente"
+	git commit -m "Primer commit" #importantisimo el primer commit
+	#Cuando intentas el primer push, github te da esto comando 
+	git push --set-upstream origin main #Tienes tu primer commit a este repositorio
+	
