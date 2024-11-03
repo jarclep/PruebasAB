@@ -10,6 +10,7 @@ Diseño de laboratorio:
 
 NOTA: con poner ! antes de una instrucción puedes ejecutar comandos tipo shell en jupyter lab
 	! pip3 install apache_beam
+NOTA: No olvides guardar el archivo ipynb para hacer el push correctamente
 
 Problema de ambientes en Python
 	-Si instalaste apache_beam pero dice que no lo encuentra, revisa en qué kernel lo instalaste, puede
