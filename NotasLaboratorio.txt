@@ -2,21 +2,46 @@ Implementando pruebas de Apache_Beam, creando una PCollection obtenida a partir 
 a SQLserver, después maniobrar con ParDo transformations.
 
 Diseño de laboratorio:
--Jupyter Lab
+-VS code (No usar Jupyter Lab)
 -Repositorio en Github
 -Apache_Beam instalado
 -SQLserver
 -Conexión a la nube GCP en linea de comando
 
+NOTA: con poner ! antes de una instrucción puedes ejecutar comandos tipo shell en jupyter lab
+	! pip3 install apache_beam
+
+Problema de ambientes en Python
+	-Si instalaste apache_beam pero dice que no lo encuentra, revisa en qué kernel lo instalaste, puede
+	que hayas creado un nuevo ambiente de python, para verificar usa este comando:
+		import sys
+		print(sys.executable)
+	Después si apache_beam se instaló en un ambiente diferente, entonces desde VS Code o de donde puedas 
+	ejecutar el ambiente, instala jupyter lab y añade el kernel del ambiente a jupyter lab de la sig manera:
+		pip install jupyterlab
+
+		pip install ipykernel
+		#Ejemplo del problema resuelto:
+		python -m ipykernel install --user --name python3.12 --display-name "Python 3.12.6"
+	Ahora abre jupyter lab y verás el nuevo kernel, úsalo y comprueba que ahora si estés donde esté apache beam con:
+		import sys
+		print(sys.executable)
+	Ahora si, puedes correr apache_beam en jupyterlab
 
 Primeros pasos:
 1. Crear un repositorio en github, ponerlo en modo público para empezar
-2. Instalar jupyter lab desde línea de comando: 
+2. Abrir y usar Python en VS code	
+	#Crea una carpeta donde pondrás tu respositorio local
+	#Abre esa carpeta desde VS code y crea un archivo ipynb
+	#Instala apache_beam y numpy, cuidado con el kernel que selecciones, una vez instalado Apache_Beam se vinculará a dicho Kernel
+	#En VS Code puedes cambiar fácilmente el kernel sobre el que corres tus librerias
+/*2. Instalar jupyter lab desde línea de comando: 
+	#De alguna manera se instaló en diferentes lugares apache_beam, se instaló en 
 	pip install jupyter lab
 	#Ejecutar jupyter lab desde la carpeta deseada, una limpia para hacer conexión a github
 	jupyter lab
 	#Instalas Apache BEam
-	pip install apache_beam
+	pip install apache_beam */
 3. Inicializar Repositorio local y conectar con remoto:
 	git init
 	git remote add origin https://github.com/jarclep/PruebasAB.git #conexión con remoto creado en 1.
@@ -27,4 +52,6 @@ Primeros pasos:
 	git commit -m "Primer commit" #importantisimo el primer commit
 	#Cuando intentas el primer push, github te da esto comando 
 	git push --set-upstream origin main #Tienes tu primer commit a este repositorio
+	
+	
 	
