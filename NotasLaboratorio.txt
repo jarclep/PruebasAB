@@ -6,6 +6,7 @@ Diseño de laboratorio:
 -Repositorio en Github
 -Apache_Beam instalado
 -SQLserver
+-DBeaver
 -Conexión a la nube GCP en linea de comando
 
 NOTA: con poner ! antes de una instrucción puedes ejecutar comandos tipo shell en jupyter lab
@@ -53,6 +54,47 @@ Primeros pasos:
 	git commit -m "Primer commit" #importantisimo el primer commit
 	#Cuando intentas el primer push, github te da esto comando 
 	git push --set-upstream origin main #Tienes tu primer commit a este repositorio
-	
+4. Crear base de datos pruebas SQLserver local
+	Descargar SQLserver gratis, una vez instalado, instalar SSMS
+	Server=localhost;Database=master;Trusted_Connection=True;
+	#la regla se llamo SQLserver-dummy
+	User: sqlserver; P4$$w0rd
+
+	Instrucciones de ChatGPT con añadidos (falta corregir lo del puerto TCP)
+	4.1. Configura SQL Server para aceptar conexiones remotas
+	Abre SSMS e inicia sesión en tu instancia de SQL Server.
+	Haz clic derecho en el nombre del servidor en el Explorador de Objetos y selecciona Propiedades.
+	Ve a la sección Conexiones y asegúrate de que la opción Permitir conexiones remotas a este servidor esté marcada.
+	Aplica los cambios y reinicia el servicio de SQL Server si es necesario.
+	4.2. Habilita la autenticación de SQL Server
+	En Propiedades del Servidor, ve a Seguridad.
+	Selecciona Autenticación de SQL Server y de Windows. Esto permite conectarte con un usuario de SQL Server, lo cual facilita la conexión desde Python.
+	Haz clic en Aceptar y reinicia el servicio de SQL Server para que los cambios surtan efecto.
+	4.3. Configura el Firewall de Windows (si aplica)
+	Asegúrate de que el puerto 1433 (el puerto predeterminado de SQL Server) esté abierto en el firewall para permitir conexiones desde aplicaciones externas. Puedes hacerlo siguiendo estos pasos:
+
+	Ve a Configuración del Firewall de Windows.
+	Selecciona Reglas de entrada y luego Nueva regla.
+	Elige Puerto como tipo de regla, y selecciona TCP con el número de puerto 1433.
+	Permite la conexión y asigna un nombre a la regla.
+	4.4. Crea un usuario de SQL Server (si no tienes uno)
+	Si no tienes un usuario de SQL Server configurado, puedes crear uno:
+
+	En SSMS, expande la carpeta Seguridad y haz clic derecho en Inicios de sesión.
+	Selecciona Nuevo inicio de sesión y crea un usuario con contraseña, asegurándote de darle permisos para conectarse a la base de datos que deseas acceder desde Python.
+	##Para que este paso funcione es necesario que des click derecho a tu servidor SQL en el que accedes a tus bases de datos
+	ahí te vas a la opción "restart", un vez hecho eso te va a solicitar que aceptes, esperas a que termine y ahora si podrás 
+	iniciar con el sql server login, en caso de que no te deje reiniciar la base de datos, reinicia la computadora
+	4.5. Instala el controlador de Python para SQL Server
+	En tu entorno de Python, instala pyodbc (una biblioteca que permite la conexión con SQL Server) con este comando:
+	! pip install pyodbc
+	4.6. Conéctate a SQL Server desde Python, ya funcionó con el código de python
+
+NOTA: falta corregir lo del puerto TCP:1433 que parece que hay que investigar más:
+https://www.youtube.com/watch?v=jcC0HrwjwoA
+Util: https://www.youtube.com/watch?v=UY8nWieArI4
+Hasta ahora con ese vídeo, al usar Dbeaver si se conecta
+
+5. Pruebas de conexión con libreria JDBC de apache_beam.io.jdbc
 	
 	
